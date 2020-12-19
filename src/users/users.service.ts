@@ -11,8 +11,8 @@ export class UsersService {
     return this.prisma.users.create({ data: { username, email, password } });
   }
 
-  findOne(id: number): Promise<users> {
-    return this.prisma.users.findUnique({ where: { id } });
+  findOne(username: string): Promise<users> {
+    return this.prisma.users.findUnique({ where: { username } });
   }
 
   update(id: number, { username, password }: UpdateUserDto): Promise<users> {
