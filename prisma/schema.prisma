@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "DATABASE_URL"
+  url      = env("DATABASE_URL")
 }
 
 model tasks {
@@ -19,8 +19,8 @@ model tasks {
 
 model users {
   id       Int     @id @default(autoincrement())
-  username String
-  email    String
+  username String  @unique
+  email    String  @unique
   password String
   tasks    tasks[]
 }
